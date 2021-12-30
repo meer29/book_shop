@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.square{
+    border-radius: 0 !important;
+}
+.bg-my-primary{
+    background-color: #650094;
+    
+}
+.btn-my-primary{
+    background-color: #650094 !important;
+    color:white !important;
+}
+.text-color-white{
+    color: white;
+}
+.book-img{
+    width: 80% !important;
+    
+}
+.my-background-img
+{
+    background-image: url('../img/my-book.jpg');
+    background-size: cover;
+    background-position: top right;
+  
+
+}
+.my-background-color{
+    background-color: #65009483;
+    height: 100%;
+    color: rgb(248, 248, 248);
+}

@@ -1,0 +1,54 @@
+Datebase name: bookshopdb
+
+CREATE TABLE `bookshopdb`.`user` ( `id` INT NOT NULL AUTO_INCREMENT , 
+`name` VARCHAR(100) NOT NULL , 
+`email` VARCHAR(100) NOT NULL , 
+`password` VARCHAR(100) NOT NULL ,
+ `cart_id` INT NOT NULL ,
+ `address` TEXT NOT NULL , 
+PRIMARY KEY (`id`), 
+UNIQUE (`email`)) ENGINE = InnoDB;
+
+Note: Add one more column as status  varchar(100) default="Pending"
+
+
+CREATE TABLE `bookshopdb`.`admin`
+ ( 
+`email` VARCHAR(100) NOT NULL , 
+`password` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;
+
+
+
+CREATE TABLE `bookshopdb`.`category`
+ ( `id` INT NOT NULL AUTO_INCREMENT , 
+`name` VARCHAR(100) NOT NULL , 
+`total_books` INT NOT NULL DEFAULT '0' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `bookshopdb`.`books`
+ ( `id` INT NOT NULL AUTO_INCREMENT , 
+`name` VARCHAR(100) NOT NULL ,
+ `rating` INT NOT NULL , 
+`author` VARCHAR(100) NOT NULL ,
+ `lang` VARCHAR(100) NOT NULL ,
+ `publisher` VARCHAR(100) NOT NULL , 
+`isbn` VARCHAR(100) NOT NULL , 
+`pages` INT NOT NULL , 
+`category_id` INT NOT NULL ,
+ `category_name` VARCHAR(100) NOT NULL ,
+ `image` VARCHAR(100) NOT NULL , 
+`price` FLOAT NOT NULL ,
+ PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+ALTER TABLE `books` ADD `recommended` INT NOT NULL DEFAULT '0' AFTER `price`;
+
+
+CREATE TABLE `bookshopdb`.`bookreview` ( `id` INT NOT NULL AUTO_INCREMENT , `book_id` INT NOT NULL , `comment` TEXT NOT NULL , `date` DATE NOT NULL , `user_name` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `bookshopdb`.`cart` ( `id` INT NOT NULL AUTO_INCREMENT , `cart_id` INT NOT NULL , `book_id` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `bookshopdb`.`order` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `status` VARCHAR(100) NOT NULL , `total_amount` DECIMAL NOT NULL , `payment_status` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `bookshopdb`.`order_details` ( `order_id` INT NOT NULL , `user_id` INT NOT NULL , `book_id` INT NOT NULL ) ENGINE = InnoDB;
